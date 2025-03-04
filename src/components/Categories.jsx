@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 
 const Categories = ({categories}) => {
     return (
         <div className='py-8'>
             <div role="tablist" className="tabs tabs-bordered">
                 {
-                    categories.map(category => <Link to={`/category/${category.category}`} key={category.id} role="tab" className="tab"> {category.category}</Link>)
+                    categories.map(category => <NavLink to={`/category/${category.category}`} 
+                        key={category.id} 
+                        role="tab" 
+                        className={({isActive}) =>  isActive ? ` tab tab-active underline text-red-700 font-bold text-base `: 'tab '}> {category.category}</NavLink>)
                 }
             </div>
         </div>
