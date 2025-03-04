@@ -5,8 +5,10 @@ import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
     return (
-        <div className='max-w-screen-2xl mx-auto px-5 md:px-16'>
-            <Nav></Nav>
+        <div className='max-w-screen-xl mx-auto px-5 md:px-16'>
+            <div className='h-28'>
+                <Nav></Nav>
+            </div>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
