@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { CiTrash } from "react-icons/ci";
+
 
 const Cart = ({ coffee, handleRemoveFevoriteCoffee }) => {
     const { pathname } = useLocation()
@@ -9,7 +11,8 @@ const Cart = ({ coffee, handleRemoveFevoriteCoffee }) => {
         <div className='relative'>
             {pathname === '/dashbord' &&
                 <div className='absolute z-10 -top-5 -right-5'>
-                    <p onClick={()=> handleRemoveFevoriteCoffee(id)} className='bg-red-400 text-black font-thin rounded-full cursor-pointer p-2'>Delete</p>
+                    <div onClick={() => handleRemoveFevoriteCoffee(id)} className='rounded-full cursor-pointer border border-red-600 p-3 bg-red-200 hover:bg-red-600' ><CiTrash  size={24}/></div>
+                    {/* <p className='bg-red-400 text-black font-thin rounded-full cursor-pointer p-2'>Delete</p> */}
                 </div>
             }
             <Link to={`/coffes/${id}`}>
