@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const Cart = ({ coffee }) => {
+const Cart = ({ coffee, handleRemoveFevoriteCoffee }) => {
     const { pathname } = useLocation()
 
     const { id, nutrition_info, ingredients, category, image, rating, popularity, name } = coffee || {};
@@ -9,7 +9,7 @@ const Cart = ({ coffee }) => {
         <div className='relative'>
             {pathname === '/dashbord' &&
                 <div className='absolute z-10 -top-5 -right-5'>
-                    <p className='bg-red-400 text-black font-thin rounded-full cursor-pointer p-2'>Delete</p>
+                    <p onClick={()=> handleRemoveFevoriteCoffee(id)} className='bg-red-400 text-black font-thin rounded-full cursor-pointer p-2'>Delete</p>
                 </div>
             }
             <Link to={`/coffes/${id}`}>

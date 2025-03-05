@@ -1,18 +1,33 @@
-import React, { useState } from 'react';
-import { storedCoffeeByLocalStorage } from '../Utils';
+import React, { useEffect, useState } from 'react';
+import { removeCoffees, storedCoffeeByLocalStorage } from '../Utils';
 import Heading from '../components/Heading';
 import Cart from '../components/Cart';
 
 const Dashbord = () => {
     const [coffees, setCoffees] = useState([]);
-    const allStoredCoffees = storedCoffeeByLocalStorage()
-    console.log(allStoredCoffees)
+
+    // stored local storage coffee data
+    useEffect(() => {
+        const allStoredCoffees = storedCoffeeByLocalStorage();
+        setCoffees(allStoredCoffees);
+    }, [])
+
+    const handleRemoveFevoriteCoffee = (id) => {
+        removeCoffees(id)
+
+        // romove id set remain coffees
+        const allCoffeeByLocalStorage= storedCoffeeByLocalStorage()
+        const remaining = allCoffeeByLocalStorage.filter(coffe => coffe.id !== id)
+       setCoffees(remaining)
+        
+        // setCoffees(remainingCoffee)
+    }
     return (
         <div>
             <Heading title={'DashBord Introduction'} subTitle={'choice your coffee and oder your fevorite coffes'}></Heading>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10'>
                 {
-                    allStoredCoffees.map(coffee => <Cart key={coffee.id} coffee={coffee}></Cart>)
+                    coffees.map(coffee => <Cart key={coffee.id} coffee={coffee} handleRemoveFevoriteCoffee={handleRemoveFevoriteCoffee}></Cart>)
                 }
             </div>
         </div>

@@ -32,7 +32,16 @@ const setFevoriteCoffeByLocalStore = (coffee) => {
 
 // Remove the fevorite item in localStorage
 
+const removeCoffees = (id) =>{
+    // stored all coffes
+    const storedCoffee = storedCoffeeByLocalStorage()
+    const remaining = storedCoffee.filter(remain=> remain.id !== id);
+    
+    localStorage.setItem('fevorite', JSON.stringify(remaining));
+    toast.success('remove done')
+}
 
 
 
-export { setFevoriteCoffeByLocalStore, storedCoffeeByLocalStorage }
+
+export { setFevoriteCoffeByLocalStore, storedCoffeeByLocalStorage, removeCoffees }
