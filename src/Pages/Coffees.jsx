@@ -28,10 +28,10 @@ const Coffees = () => {
                 <Heading title={'All Coffees'} subTitle={"World best coffees, its my fav"}></Heading>
                 <div className='flex justify-end space-x-3 mb-12'>
                     <NavLink onClick={() => setIsActive('rit')}>
-                        <button onClick={() => handleSort('ratting')} className={`${isActive === 'rit' ? 'btn btn-secondary' : 'btn btn-outline hover:btn-secondary'}`}>Sort By Rattings</button> 
+                        <button onClick={() => handleSort('ratting')} className={`${isActive === 'rit' ? 'btn btn-secondary' : 'btn btn-outline hover:btn-secondary'}`}>Sort By Rattings (DSC) </button> 
                     </NavLink>
                     <NavLink onClick={() => setIsActive('pop')} >
-                        <button onClick={() => handleSort('popularity')} className={`${isActive === 'pop' ? 'btn btn-secondary' : 'btn btn-outline hover:btn-secondary'}`}>Sort By Popularity</button>
+                        <button onClick={() => handleSort('popularity')} className={`${isActive === 'pop' ? 'btn btn-secondary' : 'btn btn-outline hover:btn-secondary'}`}>Sort By Popularity (ASC) </button>
                     </NavLink>
                 </div>
             </div>
