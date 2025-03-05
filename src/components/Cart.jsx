@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Cart = ({ coffee }) => {
+    const { pathname } = useLocation()
 
     const { id, nutrition_info, ingredients, category, image, rating, popularity, name } = coffee || {};
     return (
-        <div>
+        <div className='relative'>
+            {pathname === '/dashbord' &&
+                <div className='absolute z-10 -top-5 -right-5'>
+                    <p className='bg-red-400 text-black font-thin rounded-full cursor-pointer p-2'>Delete</p>
+                </div>
+            }
             <Link to={`/coffes/${id}`}>
                 <div className="card bg-base-100 shadow-xl transition-transform duration-300 hover:scale-105">
                     <figure>
